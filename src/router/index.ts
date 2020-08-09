@@ -1,30 +1,48 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue';
+import VueRouter, { RouteConfig } from 'vue-router';
+import Inventory from '@/views/Inventory.vue';
+import Orders from '@/views/Orders.vue';
+import CreateInvoice from '@/views/CreateInvoice.vue';
+import Customers from '@/views/Customers.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/',
+    name: 'home',
+    component: Inventory,
   },
+
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+    path: '/inventory',
+    name: 'inventory',
+    component: Inventory,
+  },
+
+  {
+    path: '/customers',
+    name: 'customers',
+    component: Customers,
+  },
+
+  {
+    path: '/orders',
+    name: 'orders',
+    component: Orders,
+  },
+
+  {
+    path: '/invoice/new',
+    name: 'create-invoice',
+    component: CreateInvoice,
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
